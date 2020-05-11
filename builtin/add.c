@@ -540,8 +540,9 @@ int cmd_add(int argc, const char **argv, const char *prefix)
 		/* Set up the default git porcelain excludes */
 		memset(&dir, 0, sizeof(dir));
 		if (!ignored_too) {
-			dir.flags |= DIR_COLLECT_IGNORED;
 			setup_standard_excludes(&dir);
+		} else {
+			dir.flags |= DIR_COLLECT_IGNORED;
 		}
 
 		/* This picks up the paths that are not tracked */
